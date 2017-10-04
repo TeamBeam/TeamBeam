@@ -25,7 +25,7 @@ knex.schema.createTableIfNotExists('users', function (table) {
   console.log('Error creating users table', err);
 })
 .then((results) => {
-  console.log('Sucess creating threads table');
+  console.log('Success creating threads table');
   return knex.schema.createTableIfNotExists('posts', function (table) {
     table.increments();
     table.text('message');
@@ -39,7 +39,7 @@ knex.schema.createTableIfNotExists('users', function (table) {
   console.log('Error creating threads table', err);
 })
 .then((results) => {
-  console.log('Sucess creating posts table');
+  console.log('Success creating posts table');
   return knex.schema.createTableIfNotExists('albums', function (table) {
     table.increments();
     table.string('title');
@@ -51,7 +51,7 @@ knex.schema.createTableIfNotExists('users', function (table) {
   console.log('Error creating posts table', err);
 })
 .then((results) => {
-  console.log('Sucess creating albums table');
+  console.log('Success creating albums table');
   return knex.schema.createTableIfNotExists('profiles', function (table) {
     table.increments();
     table.json('instruments');
@@ -73,25 +73,28 @@ knex.schema.createTableIfNotExists('users', function (table) {
   process.exit(1);
 });
 
-/**Example of saving an object into a table**
+// *Example of saving an object into a table**
 
-let dummyThread = {
-  title: 'example title',
-  description: 'example description',
-  instruments: JSON.stringify(['Piano', 'Drums']),
-  musicsheet: 'https://i.pinimg.com/736x/f8/04/cb/f804cbff9ca51419934b6665c758b977--alto-sax-sheet-music-free-sheet-music.jpg',
-  user_id: 1,
-  created_at: new Date()
-}
+// let dummyThread = {
+//   title: 'example title',
+//   description: 'example description',
+//   instruments: JSON.stringify(['Piano', 'Drums']),
+//   musicsheet: 'https://i.pinimg.com/736x/f8/04/cb/f804cbff9ca51419934b6665c758b977--alto-sax-sheet-music-free-sheet-music.jpg',
+//   user_id: 1,
+//   created_at: new Date()
+// }
 
-let Thread = bookshelf.Model.extend({
-  tableName: 'threads'
-});
+// let Thread = bookshelf.Model.extend({
+//   tableName: 'threads'
+// });
 
-User.forge(dummyUser).save()
-.then((results) => {
-  console.log('sucess save user', results);
-}, (err) => {
-  console.log('err save user', err);
-});
-********************************************/
+// User.forge(dummyUser).save()
+// .then((results) => {
+//   console.log('sucess save user', results);
+// }, (err) => {
+//   console.log('err save user', err);
+// });
+
+
+// *******************************************
+

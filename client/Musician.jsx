@@ -7,6 +7,7 @@ import Albums from './Albums.jsx'
 import Collaboration from './Collaboration.jsx'
 import { Grid, Row, Col } from 'react-bootstrap'
 import $ from 'jquery';
+const axios = require('axios');
 const user = require('../data/user_data.js');
 const profile = require('../data/profile_data.js');
 
@@ -22,8 +23,20 @@ export default class Musician extends React.Component {
       collaboration: ''
     };
 
+    this.getUser = this.getUser.bind(this);
   }
 
+  getUser() {
+    axios.get('/')
+      .then(response => {
+
+      })
+
+  }
+
+  didComponentMount() {
+    this.getUser();
+  }
 
 
   render() {

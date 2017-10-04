@@ -1,21 +1,32 @@
 const routes = require('express').Router();
 const models = require('../db/models')
 
+
 /* ---------------------------- Handle GET Request ---------------------------- */
 
 routes.get('/', (req, res) => {
-
-  /*
-    res.send('index')
-    index
-  */
-
+  res.send('index')
 });
 
 routes.get('/user/:username', (req, res) => {
-  let user = req.params.username;
-  /* query username from db */
+  let username = req.params.username; // username endpoint
+  let userData = {}
 
+  models.User.query('where', 'username', '=', username).fetch()
+    .then(userResults => {
+      let userId = userResults.attributes.id; // get user id from the user
+      userData.user = userResults
+      return models.Profile.query('where', 'user_id', '=', userId).fetch()
+    })
+    .then(profileResults => {
+      userData.profile = profileResults
+      res.send(userData);
+      res.end()
+    }, (err) => {
+      console.log('err username does not exist', err);
+      res.status(400);
+      res.end();
+    })
 
 });
 
