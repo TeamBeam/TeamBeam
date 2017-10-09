@@ -91,17 +91,62 @@ body, input, select, textarea, html {
   top: -9em;
 }
 
-
 textarea {
   resize: none;
 }
 
 .user {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .about-me, .recent-track, .collab, .post {
+  font-size: 18px;
+}
+
+.container-fluid a {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.form {
+  margin: 0px 0px 10px 0px;
+}
+
+.input {
+  width: 300px;
+  height: 32px;
+  border: 1px solid #ccc;
+  margin: 0px 10px 0px 0px;
+  border-radius: 4px;
+}
+
+.thread-message {
+  margin: 0px 15px 0px 15px;
+}
+
+.userthread, .posts {
   font-size: 16px;
+  margin: 0px 15px 0px 15px;
+}
+
+.userthread {
+  font-weight: bold;
+}
+
+.searchbar {
+  height: 5px;
+}
+
+.thread-main, .create-post {
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+.thread-search {
+  position: relative;
+  right: 15px;
 }
 
 

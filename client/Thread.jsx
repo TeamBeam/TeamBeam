@@ -64,7 +64,7 @@ export default class Thread extends React.Component {
         <div className="thread-summary" onClick={this.openPopup}>
           <h3>{this.props.threadData.title}</h3>
           <RB.Well>
-            <p>{this.props.threadData.description}</p>
+            <p className="thread-main">{this.props.threadData.description}</p>
           </RB.Well>
         </div>
 
@@ -74,7 +74,7 @@ export default class Thread extends React.Component {
           contentLabel="ThreadPopup"
         >
           <RB.Row>
-              <RB.PageHeader>{this.props.threadData.title}</RB.PageHeader>
+              <RB.PageHeader className="container" >{this.props.threadData.title}</RB.PageHeader>
               <RB.Col xs={1} xsOffset={11}>
                 <RB.Button onClick={this.closePopup} bsSize="small" className="thread-exit">
                   <RB.Glyphicon glyph="remove" />
@@ -82,25 +82,22 @@ export default class Thread extends React.Component {
               </RB.Col>
           </RB.Row>
           <RB.Row>
-            <p>{this.props.threadData.description}</p>
+            <RB.Image className="container-fluid" src={this.props.threadData.musicsheet} responsive />
           </RB.Row>
-          <RB.Row>
-            <RB.Image src={this.props.threadData.musicsheet} responsive />
-          </RB.Row>
-          <RB.Row>
+          <div className="container posts">
             <h4>Instruments</h4>
             <ul type="disc">
               {JSON.parse(this.props.threadData.instruments).map((instrument) => {
                 return <li>{instrument}</li>
               })}
             </ul>
-          </RB.Row>
+          </div>
           <RB.Row>
-            <RB.ListGroup className="posts">
+            <RB.ListGroup className="container posts">
               {this.state.posts.map((post, index) => {
                 return (
-                  <RB.ListGroupItem>
-                    <RB.Row>
+                  <RB.ListGroupItem className="posts">
+                    <RB.Row className="userthread">
                       User id: {post.user_id} {post.created_at}
                       <RB.Col xs={1} xsOffset={11}>
                         <RB.Button onClick={(e) => this.deletePosts(index)} bsSize="xsmall">
@@ -108,7 +105,7 @@ export default class Thread extends React.Component {
                         </RB.Button>
                       </RB.Col>
                     </RB.Row>
-                    <RB.Row>
+                    <RB.Row className="posts">
                       {post.message}
                     </RB.Row>
                   </RB.ListGroupItem>
@@ -117,12 +114,13 @@ export default class Thread extends React.Component {
             </RB.ListGroup>
           </RB.Row>
 
-          <form onSubmit={(e) => this.handleReply(e)}>
-            <RB.FormGroup>
-              <RB.FormControl componentClass="textarea" name="reply-text"/>
+          <form className="container" onSubmit={(e) => this.handleReply(e)}>
+            <RB.FormGroup >
+              <RB.FormControl className="searchbar" componentClass="textarea" name="reply-text"/>
+              <RB.Button bsStyle="primary" type="submit">Reply</RB.Button>
             </RB.FormGroup>
-            <RB.Button type="submit">Reply</RB.Button>
           </form>
+
         </Modal>
       </div>
     );
