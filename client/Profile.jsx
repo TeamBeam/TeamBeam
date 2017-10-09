@@ -58,7 +58,7 @@ export default class Profile extends React.Component {
     if(this.state.profile.profiletype === 'composer') {
       return <Composer user={this.props.user} profile={this.state.profile} posts={this.state.posts} albums={this.state.albums}></Composer>
     } else if (this.state.profile.profiletype === 'musician') {
-      return <Musician user={this.props.user} profile={this.state.profile}></Musician>
+      return <Musician user={this.props.user} profile={this.state.profile} albums={this.state.albums}></Musician>
     } else {
       return <p>Loading profile...</p>
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col, Panel } from 'react-bootstrap'
 
 // TODO: Refactor to get/store img data from database
 // Using hardcoded images For MVP presentation

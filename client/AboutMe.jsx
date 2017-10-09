@@ -1,4 +1,5 @@
 import React from 'react';
+import { Panel } from 'react-bootstrap'
 
 const AboutMe = (props) => (
 	<div className="about-me">
