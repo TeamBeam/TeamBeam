@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Dropzone from 'react-dropzone'
 import axios from 'axios';
-import { Button, FormControl, ControlLabel, FormGroup, Checkbox, Radio, Input, Well, Label, InputGroup } from 'react-bootstrap';
+import { Button, FormControl, ControlLabel, FormGroup, Checkbox, Radio, Input, Well, Label, InputGroup, Grid, Row } from 'react-bootstrap';
 
 class CreatePost extends React.Component {
   constructor(props) {
@@ -30,13 +30,16 @@ class CreatePost extends React.Component {
     }
     this.setState({sendable: sendable}, ()=> {
       var data = this.state.sendable;
-      axios.post('/forum', data)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      if (data.title.length) {
+        axios.post('/forum', data)
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        this.props.closePopup();
+      }
     })
   }
   setInput(e, input) {
@@ -134,26 +137,37 @@ class CreatePost extends React.Component {
           </Well>
         </Well>
 
+        <Grid>
+        
         <div style={imgs}>
-          <div style={dropzone}>
-            <Dropzone onDrop={this.onDrop.bind(this)}> Click to upload musicsheet
-            </Dropzone>
-          </div>
-          
-          <div style={sheetWrapper}>
-            <Label bsStyle='info'>
-              {'sheet uploaded'}
-            </Label>
-            <br/>
-            {' '}
-            <img style={musicSheet} src={`${this.state.musicsheet}`}/>
-          </div>
+          <Row>
+            <div style={dropzone}>
+              <Dropzone onDrop={this.onDrop.bind(this)}> Click to upload musicsheet
+              </Dropzone>
+            </div>
+          </Row>
+          <Row>
+            <div style={sheetWrapper}>
+              <Label bsStyle='info'>
+                {'sheet uploaded'}
+              </Label>
+              <br/>
+              {' '}
+              {
+                this.state.musicsheet.length ?
+                  (<img style={musicSheet} src={`${this.state.musicsheet}`}/>) :
+                  ('(no sheet uploaded)')
+              }
+            </div>
+          </Row>
   
           <br/>
+
           <Button bsSize='large' bsStyle='success' onClick={this.constructPost.bind(this)}>
            Post to thread
           </Button>
         </div>
+        </Grid>
        
       </form>
     )
